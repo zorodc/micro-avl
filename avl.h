@@ -5,6 +5,9 @@
  * \author Daniel Collins
  * \date   12-18-2018 (US)
  *
+ * Note: Requires that one define AVL_UPTR_T if using the default pointer type.
+ *       This is so that we don't depend on the C stdlib for uintptr_t.
+ *
  * One of my finer (if more enigmatic) side-projects.
  * This is an AVL tree implementation which is meant to save memory.
  * The nodes are intrusive, and hence, live in the same buffer as their content.
@@ -29,9 +32,6 @@
  * If using the above-mentioned 16-bit indicies scheme, one can still address
  * ~16K elements, but needs only 4 bytes of overhead per element in the tree.
  * This is smaller than the overhead for all hash tables I have ever heard of.
- *
- * Note: Requires that one define AVL_UPTR_T if using the default pointer type.
- *       This is so that we don't depend on the C stdlib for uintptr_t.
  *
  * Pretty nifty!
  *
