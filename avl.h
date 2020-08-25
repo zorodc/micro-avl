@@ -30,6 +30,9 @@
  * ~16K elements, but needs only 4 bytes of overhead per element in the tree.
  * This is smaller than the overhead for all hash tables I have ever heard of.
  *
+ * Note: Requires that one define AVL_UPTR_T if using the default pointer type.
+ *       This is so that we don't depend on the C stdlib for uintptr_t.
+ *
  * Pretty nifty!
  *
  * The only flaw left is that it recomputes a balance factor on rotation.
