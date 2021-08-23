@@ -68,7 +68,9 @@ static void insert_random(unsigned s, unsigned m, struct node_v* v, avl_tree* t,
 unsigned compute_seed(const char* str)
 {
 	unsigned acc = 0;
-	while (*str) acc |= (unsigned char) *str++, acc ^= (acc & 0x3Fffu) << 2;
+	while (*str) acc |= (unsigned char) *str++, acc ^= (acc * 0x3A1Fu) << 2;
+	
+	return acc;
 }
 
 void dump_tree(avl_tree* t)
@@ -93,6 +95,6 @@ int main(int argc, const char* argv[])
 	struct node_v v = { (struct avl_node*)_buffer, _stride, 4096 };
 	avl_tree tree   = avl_tree_init(in_lt, offsetof(struct integer_node, nval));
 
-	insert_random(compute_seed(argc > 1 ? argv[0] : ""), 4096u, &v, &tree, nop);
+	insert_random(compute_seed(argc > 1 ? argv[1] : ""), 4096u, &v, &tree, nop);
 	dump_tree(&tree);
 }
