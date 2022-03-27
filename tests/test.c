@@ -69,7 +69,7 @@ unsigned compute_seed(const char* str)
 {
 	unsigned acc = 0;
 	while (*str) acc |= (unsigned char) *str++, acc ^= (acc * 0x3A1Fu) << 2;
-	
+
 	return acc;
 }
 
